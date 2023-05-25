@@ -1,0 +1,2 @@
+Training time in H:M:S
+2:13:43.664602

@@ -1,0 +1,13 @@
+/environment/workdir/Documents/uhaworkspace/kitti/training_cf/semantic_rgb/000116_10.png
+/environment/workdir/Documents/uhaworkspace/kitti/training_cf/semantic_rgb/000162_10.png
+/environment/workdir/Documents/uhaworkspace/kitti/training_cf/semantic_rgb/000107_10.png
+/environment/workdir/Documents/uhaworkspace/kitti/training_cf/semantic_rgb/000160_10.png
+/environment/workdir/Documents/uhaworkspace/kitti/training_cf/semantic_rgb/000079_10.png
+/environment/workdir/Documents/uhaworkspace/kitti/training_cf/semantic_rgb/000147_10.png
+/environment/workdir/Documents/uhaworkspace/kitti/training_cf/semantic_rgb/000057_10.png
+/environment/workdir/Documents/uhaworkspace/kitti/training_cf/semantic_rgb/000129_10.png
+/environment/workdir/Documents/uhaworkspace/kitti/training_cf/semantic_rgb/000155_10.png
+/environment/workdir/Documents/uhaworkspace/kitti/training_cf/semantic_rgb/000095_10.png
+/environment/workdir/Documents/uhaworkspace/kitti/training_cf/semantic_rgb/000035_10.png
+/environment/workdir/Documents/uhaworkspace/kitti/training_cf/semantic_rgb/000110_10.png
+/environment/workdir/Documents/uhaworkspace/kitti/training_cf/semantic_rgb/000164_10.png
