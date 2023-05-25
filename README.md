@@ -45,22 +45,32 @@ The evidential formulation introduces a extra class called _ignorance_ to treat 
 Road Detection: Bird Eye View
 
 Evidential Prediction
+
 ![uu_road_000028_evi_mix_old](https://github.com/vasigiurgi/evi-cf-deep-learning-based-for-iv/assets/49117053/206a2be5-b604-4f5c-82d1-3d2ed5d932b0)
+
 Probabilistic Prediction
+
 ![uu_road_000028_prob_mix_old](https://github.com/vasigiurgi/evi-cf-deep-learning-based-for-iv/assets/49117053/d22f19b9-3162-4185-a60c-fe37df7c20c4)
 
 
 Semantic Segmentation
 
 Far-end points are classified as ignorance, rather than making a wrong prediction.
+
 Predicted frame (4 classes, including ignorance)
+
 ![pred_test](https://github.com/vasigiurgi/evi-cf-deep-learning-based-for-iv/assets/49117053/dce440c8-3b16-4f9f-bc39-419bf700fc56)
+
 Groundtruth frame, simplified with 3 classes. 
+
 ![gt_test](https://github.com/vasigiurgi/evi-cf-deep-learning-based-for-iv/assets/49117053/ef87a3fd-db12-4e63-b5a6-8c749951ffcb)
 
 Predicted frame (4 classes, including ignorance)
+
 ![pred_000162_10](https://github.com/vasigiurgi/evi-cf-deep-learning-based-for-iv/assets/49117053/343d6507-1da5-40d4-b96a-9c1fde72b040)
+
 Groundtruth frame, simplified with 3 classes. 
+
 ![gt_000162_10](https://github.com/vasigiurgi/evi-cf-deep-learning-based-for-iv/assets/49117053/431767af-6fba-4649-afc7-9af154649142)
 
 
