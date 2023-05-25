@@ -39,6 +39,10 @@ The number of classes is simplified to 3 classes: road, vehicle and background.
 # Results
 Road Detection
 
+![uu_road_000028_evi_mix_old](https://github.com/vasigiurgi/evi-cf-deep-learning-based-for-iv/assets/49117053/206a2be5-b604-4f5c-82d1-3d2ed5d932b0)
+![uu_road_000028_prob_mix_old](https://github.com/vasigiurgi/evi-cf-deep-learning-based-for-iv/assets/49117053/d22f19b9-3162-4185-a60c-fe37df7c20c4)
+
+
 Semantic Segmentation
 The evidential formulation introduces a extra class called _ignorance_ to treat the uncertaintes. 
 Far-end points are classified as ignorance, rather than making a wrong prediction.
