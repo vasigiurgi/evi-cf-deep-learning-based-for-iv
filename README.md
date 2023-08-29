@@ -30,8 +30,8 @@ In the _utils.py_ file, simplification of the classes is intransigent. Two archi
 **DS1_activate**
 
 # Decision Making
-The belief theory approach Distance to prototypes using Interval Dominance is adapted to road segmentation as well as multi-class segmentation 
-
+The belief theory approach Distance to prototypes using Interval Dominance is adapted to road segmentation as well as multi-class segmentation.  
+Greetings to Tong Zheng (@tongzheng1992) for the inspiring E-CNN-classifier. 
 # Dataset
 
 Two datasets both from KITTI Benchmark were used in this work: KITTI road and KITTI semantic pixel-wise. 
@@ -76,7 +76,22 @@ Groundtruth frame, simplified with 3 classes.
 
 # Citing 
 **Evidential deep learning-based multi-modal environment perception for intelligent vehicles**
-[to be updated]
+
+BibTex:
+
+@INPROCEEDINGS{10186581,
+  author={Geletu, Mihreteab Negash and Giurgi, Dănuţ-Vasile and Josso-Laurain, Thomas and Devanne, Maxime and Wogari, Mengesha Mamo and Lauffenburger, Jean-Philippe},
+  booktitle={2023 IEEE Intelligent Vehicles Symposium (IV)}, 
+  title={Evidential deep learning-based multi-modal environment perception for intelligent vehicles}, 
+  year={2023},
+  volume={},
+  number={},
+  pages={1-6},
+  doi={10.1109/IV55152.2023.10186581}}
+
+Plain Text: 
+
+M. N. Geletu, D. -V. Giurgi, T. Josso-Laurain, M. Devanne, M. M. Wogari and J. -P. Lauffenburger, "Evidential deep learning-based multi-modal environment perception for intelligent vehicles," 2023 IEEE Intelligent Vehicles Symposium (IV), Anchorage, AK, USA, 2023, pp. 1-6, doi: 10.1109/IV55152.2023.10186581.
 
 
 
