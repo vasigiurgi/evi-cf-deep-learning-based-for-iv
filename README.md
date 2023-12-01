@@ -1,9 +1,7 @@
 # Evidential deep learning-based multi-modal environment perception for intelligent vehicles
 KITTI Road, KITTI Semantic, Road Detection, Semantic Segmentation, Evidence Theory
 
-!!! Code to be reviewed and updated accordingly
-
-
+Adjustements to decision-making and the number of prototypes used have to be considered, and links between the organization of the files. 
 
 # Overview 
 In this work, evidence theory is combined with a camera-lidar-based deep learning fusion architecture. The coupling is based on generating basic belief functions using distance to prototypes. It also uses a distance-based decision rule.
@@ -31,7 +29,7 @@ In the _utils.py_ file, simplification of the classes is intransigent. Two archi
 
 # Decision Making
 The belief theory approach Distance to prototypes using Interval Dominance is adapted to road segmentation as well as multi-class segmentation.  
-Greetings to Tong Zheng (@tongzheng1992) for the inspiring E-CNN-classifier. 
+The E-CNN-classifier is referred to Tong Zheng's respository (@tongzheng1992) 
 # Dataset
 
 Two datasets both from KITTI Benchmark were used in this work: KITTI road and KITTI semantic pixel-wise. 
