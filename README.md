@@ -28,8 +28,8 @@ In the _utils.py_ file, simplification of the classes is intransigent. Two archi
 **DS1_activate**
 
 # Decision Making
-The belief theory approach Distance to prototypes using Interval Dominance is adapted to road segmentation as well as multi-class segmentation.  
-The E-CNN-classifier is referred to Tong Zheng's respository (@tongzheng1992) 
+The belief theory approach Distance to prototypes using Interval Dominance and Decision Based Interval adapted to road segmentation as well as multi-class segmentation.  
+The E-CNN-classifier is referred to Tong Zheng's respository (@tongzheng1992) and its inspired by the evidential classifer of Prof. Denouex. 
 # Dataset
 
 Two datasets both from KITTI Benchmark were used in this work: KITTI road and KITTI semantic pixel-wise. 
