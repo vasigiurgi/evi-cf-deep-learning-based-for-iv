@@ -1,13 +1,7 @@
 
 # -*- coding: utf-8 -*-
-"""
-Created on Thu Sep 15 09:48:01 2022
 
-@author: Mihreteab
-"""
-"""
-I think this is required not requied on Jupyter, rather on Spyder
-import sys
+#import sys
 #adding libs to the system path
 sys.path.insert(0, 'home/Documents/publication/kitti/model_arch/cf_evi_pcr6plus_dBI/libs')
 """
