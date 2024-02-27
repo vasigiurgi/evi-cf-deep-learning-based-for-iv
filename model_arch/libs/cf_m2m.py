@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Thu Sep 15 08:54:20 2022
 
-@author: Mihreteab
-"""
 #Cross fusion layer: multiplies a layer (lidar or rgb) 
 #with a scalar (the fusion weight)
 
