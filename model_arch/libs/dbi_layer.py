@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Mon Sep 12 14:40:18 2022
 
-@author: Mihreteab
-"""
 import tensorflow as tf
 
 # Belief-Plausibility joint calculation of BBAs, m(.)s   
