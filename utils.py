@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Fri Sep 24 14:28:32 2021
-
-@author: deeplearning-miam
-"""
 import os
 import random
 import pdb
