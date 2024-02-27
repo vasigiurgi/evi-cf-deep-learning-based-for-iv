@@ -1,11 +1,7 @@
 
 
 # -*- coding: utf-8 -*-
-"""
-Created on Thu Sep 15 09:48:01 2022
 
-@author: Mihreteab
-"""
 
 from tensorflow import keras
 from tensorflow.keras import layers
