@@ -37,6 +37,8 @@ https://www.cvlibs.net/datasets/kitti/
 The second dataset used for semantic segmentation contains 127 frames (lidar and camera) from the KITTI raw dataset. 
 The number of classes is simplified to 3 classes: road, vehicle and background. 
 
+	The lidar-camera dataset The semantic KITTI dataset has originally only 200 camera images. The dataset is similar to KITTI Stereo and KITTI Flow 2012/2015 datasets. Since the KITTI semantic has no LiDAR frames (like the road dataset for instance), the corresponding 3D point-cloud points of the existing camera frames have to be identified in the big original KITTI raw dataset, which contains the data for all tasks. Hence, for 127 out of the 200 camera images, LiDAR frames have been successfully projected and up-sampled to create dense depth images. A 3D LiDAR point x is mapped into a point y in the camera plane according to the KITTI projection P, rectification R and translation T matrices
+
 # Results
 The evidential formulation introduces a extra class called _ignorance_ to treat the uncertaintes. More deeper explanations are treated in the paper that is in the process of being published. 
 
