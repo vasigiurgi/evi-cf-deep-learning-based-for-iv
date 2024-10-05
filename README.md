@@ -4,7 +4,16 @@ KITTI Road, KITTI Semantic, Road Detection, Semantic Segmentation, Evidence Theo
 Adjustements to decision-making and the number of prototypes used have to be considered, and links between the organization of the files. 
 
 # Overview 
-In this work, evidence theory is combined with a camera-lidar-based deep learning fusion architecture. The coupling is based on generating basic belief functions using distance to prototypes. It also uses a distance-based decision rule.
+In this work, evidence theory is combined with a camera-lidar-based deep learning fusion architecture. The encoding section together with context module have two
+processing pipelines of 13 layers each, one for LiDAR and
+the other for camera input. Each layer of one modality is
+fused with the corresponding layer of the other modality by a
+weighted sum operation. The fusion weights are trainable, this
+makes the position and extent of fusion to be fixed by the data.
+Once the LiDAR and camera inputs are represented by BBAs
+in the evidential formulation layer, a decision can be made on
+desired calss. 
+The coupling is based on generating basic belief functions using distance to prototypes. It also uses a distance-based decision rule.
 The project is an extended work of the cross-fusion reduction repository:
 https://github.com/geletumn/cf_reduction
 The new benchmark introduces evidence theory for the decision-making part. 
