@@ -102,5 +102,5 @@ Plain Text:
 
 M. N. Geletu, D. -V. Giurgi, T. Josso-Laurain, M. Devanne, M. M. Wogari and J. -P. Lauffenburger, "Evidential deep learning-based multi-modal environment perception for intelligent vehicles," 2023 IEEE Intelligent Vehicles Symposium (IV), Anchorage, AK, USA, 2023, pp. 1-6, doi: 10.1109/IV55152.2023.10186581.
 
-
+An updated version of the code that treats uncertainties will be available soon at: https://github.com/vasigiurgi/conflict-management-edl 
 
