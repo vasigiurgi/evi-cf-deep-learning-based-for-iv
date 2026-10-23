@@ -43,8 +43,16 @@ class DS3_normalize(tf.keras.layers.Layer):
         return config
 
 # Define mass functions
-m1 = np.array([0.6, 0.3, 0.1])  # m1(A), m1(B), m1(A ∪ B)
-m2 = np.array([0.2, 0.3, 0.5])  # m2(A), m2(B), m2(A ∪ B)
+# m1 = np.array([0.6, 0.3, 0.1])  # m1(A), m1(B), m1(A ∪ B)
+# m2 = np.array([0.2, 0.3, 0.5])  # m2(A), m2(B), m2(A ∪ B)
+
+# m1 = np.array([0.80, 0.15, 0.05])  # m1(A), m1(B), m1(A ∪ B)
+# m2 = np.array([0.55, 0.25, 0.20])  # m2(A), m2(B), m2(A ∪ B)
+
+m1 = np.array([0.71, 0.10, 0.09])  # m1(A), m1(B), m1(A ∪ B)
+m2 = np.array([0.01, 0.96, 0.03])  # m2(A), m2(B), m2(A ∪ B)
+
+
 
 
 # Create a 5D input tensor for the fusion layers

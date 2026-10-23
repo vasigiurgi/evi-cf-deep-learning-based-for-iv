@@ -27,7 +27,7 @@ class BeliefPlausibility(tf.keras.layers.Layer):
         for i in range (pow(2,self.cardinal_fod)-2):
             
             tf.autograph.experimental.set_loop_options(
-              shape_invariants=[(bel, tf.TensorShape([None,384,1248,None]))]
+              shape_invariants=[(bel, tf.TensorShape([None,None,None,None]))]
                )
             if i == 0:                            
                 index = tf.bitwise.bitwise_and(i+1, singleton_index)
@@ -87,7 +87,7 @@ class BeliefPlausibilityFocused(tf.keras.layers.Layer):
         for i in range (pow(2,self.cardinal_fod)-1):
             
             tf.autograph.experimental.set_loop_options(
-              shape_invariants=[(bel, tf.TensorShape([None,384,1248,None])),(pl, tf.TensorShape([None,384,1248,None]))]
+              shape_invariants=[(bel, tf.TensorShape([None,None,None,None])),(pl, tf.TensorShape([None,None,None,None]))]
                )
          
             index_contain = tf.bitwise.bitwise_and(i+1, self.focal)

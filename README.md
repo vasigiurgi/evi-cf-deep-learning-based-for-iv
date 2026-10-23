@@ -23,18 +23,35 @@ The new benchmark introduces evidence theory for the decision-making part.
 
 
 # Installation 
-Python version and TF framework
-**python 3.7**
+The project uses [uv](https://docs.astral.sh/uv/) with Python 3.9 and TensorFlow 2.9 (`tensorflow-macos` on Apple Silicon):
 
-**tensorflow==2.8.0**
+```bash
+uv sync                    # creates .venv with all dependencies
+uv sync --extra metal      # optional: Apple Silicon GPU
+uv sync --extra notebook   # optional: Jupyter
+```
 
 # Getting Started
-Before running the jupyter, the user is advised to import the corresponding libraries and activation functions related to evidential formulation part.
-In the _utils.py_ file, simplification of the classes is intransigent. Two architectures can be found in model_arch and their corresponding weights 
- 
-**ds_layer_p2p**
+Two architectures can be found in _model_arch_; both use the evidential layers in _libs_ (**ds_layer_p2p**, **DS1_activate**, ...).
+In the _utils.py_ file, the classes are simplified to road, car and background.
 
-**DS1_activate**
+Build and save an (untrained) model:
+
+```bash
+uv run python model_arch/build_model_lite_cf_ds.py
+uv run python model_arch/build_model_cf_uni_ds.py
+```
+
+Train (each run writes its checkpoint and history to `output/run_<date>_<time>/`):
+
+```bash
+uv run python train.py --epochs 2                      # quick check
+uv run python train.py --epochs 500                    # full training
+uv run python train.py --model cf_uni_ds --epochs 500  # the other architecture
+uv run python train.py -h                              # all options
+```
+
+or step by step in `run_train.ipynb` (`uv run jupyter notebook run_train.ipynb`).
 
 # Decision Making
 The belief theory approach Distance to prototypes using Interval Dominance and Decision Based Interval adapted to road segmentation as well as multi-class segmentation.  

@@ -2,14 +2,12 @@
 # -*- coding: utf-8 -*-
 import os
 import random
-import pdb
 import numpy as np
 from sklearn.model_selection import StratifiedKFold
 from sklearn.utils import shuffle
 from tensorflow import keras
 from tensorflow.keras.preprocessing.image import load_img
 from skimage.transform import rotate
-import matplotlib.pyplot as plt
 
 
 def img_path (dir, ext):
@@ -18,28 +16,14 @@ def img_path (dir, ext):
     [
         os.path.join(dir, fname)
         for fname in os.listdir(dir)
-        #if fname.endswith(ext) and fname.startswith("u")
         if fname.endswith(ext)
     ]
 )
     return img_path
 
-# category label
+# category label: a single class for now, so the stratified split is a plain k-fold
 def cat_label (paths_list):
-    path_label=[] # 0 for urban marked (um), 1 for urban multiple marked (umm) and 2 for urban unmarked (uu)
-    for i in range(len(paths_list)):
-        """
-        fname= os.path.split(paths_list[i])[1]
-        if fname.startswith ("um_"):
-            path_label.append(0)
-        elif fname.startswith("umm_"):
-            path_label.append(1)
-        elif fname.startswith("uu_"):
-            path_label.append(2)
-            """
-        path_label.append(0)
-    return path_label
-        
+    return [0] * len(paths_list)
 
 # stratified 10-fold cross-validation
 def train_val_split(input_dir_rgb, input_dir_velo, target_dir):
@@ -60,15 +44,18 @@ def train_val_split(input_dir_rgb, input_dir_velo, target_dir):
         DESCRIPTION. dictionary of 10 train/val split for rgb, velo, target
     """
     split_dic={}
+    # Keep only frames present in all three folders, so the splits stay aligned
+    common= set(os.listdir(input_dir_rgb)) & set(os.listdir(input_dir_velo)) & set(os.listdir(target_dir))
+    keep= lambda paths: [p for p in paths if os.path.basename(p) in common]
     # Prepare the image paths
     #RGB
-    img_paths_rgb= img_path(input_dir_rgb, ".png")
+    img_paths_rgb= keep(img_path(input_dir_rgb, ".png"))
     img_paths_rgb= np.array(img_paths_rgb)
     # Velo
-    img_paths_velo= img_path(input_dir_velo, ".png")  
+    img_paths_velo= keep(img_path(input_dir_velo, ".png"))
     img_paths_velo= np.array(img_paths_velo)
     # Target (ground truth)
-    target_img_paths= img_path(target_dir, ".png")
+    target_img_paths= keep(img_path(target_dir, ".png"))
     target_img_paths= np.array(target_img_paths)
     # Path label
     label= cat_label(img_paths_rgb)
@@ -107,11 +94,6 @@ def split_check(paths_list):
     file_names=[]
     for item in  paths_list:
         file_key=os.path.split(item)[1].split('.')[0]
-        #f_split=file_key.split('_')
-        #if 'road' in f_split:
-         #   file_key= f_split[0]+ '_' + f_split[2]
-        #else:
-         #   pass
         file_names.append(file_key)
     return file_names
 
@@ -124,8 +106,6 @@ def write_path(out_dir,paths_list,file_name):
       # write elements of list
       for items in paths_list:
             f.write('%s\n' %items)
-    # close the file
-    f.close()
     return 0
 
 #Prepare Sequence class to load & vectorize batches of data: individual random aug, not at epch end
@@ -154,10 +134,7 @@ class kittiroad(keras.utils.Sequence):
         for j, path in enumerate(batch_input_img_paths_rgb):
             img = load_img(path)
             w,h=img.size
-            
-#             if self.val==False: # training 
-#                 img=rotate(img,angle)
-            
+
             dh=int((self.img_size[0]-h)/2)
             dw=int((self.img_size[1]-w)/2)
             zero_padded_img=np.zeros(self.img_size+(3,), dtype="float32")
@@ -171,10 +148,7 @@ class kittiroad(keras.utils.Sequence):
         for j, path in enumerate(batch_input_img_paths_velo):
             img = load_img(path)
             w,h=img.size
-            
-#             if self.val==False: # training 
-#                 img=rotate(img,angle)
-            
+
             dh=int((self.img_size[0]-h)/2)
             dw=int((self.img_size[1]-w)/2)
             zero_padded_img=np.zeros(self.img_size+(3,), dtype="float32")
@@ -187,23 +161,19 @@ class kittiroad(keras.utils.Sequence):
         x1_x2=[x1,x2]   
         
         y = np.zeros((self.batch_size,) + self.img_size + (3,), dtype="uint8")
-        sw = np.zeros((self.batch_size,) + self.img_size + (1,), dtype="uint8")
+        sw = np.zeros((self.batch_size,) + self.img_size + (1,), dtype="float32")
         for j, path in enumerate(batch_target_img_paths):
             
             mask = load_img(path)
             mask = np.asanyarray(mask)
-            
-#             if self.val==False: # training
-#                  mask=rotate(mask,angle)
-                    
+
             img_height = mask.shape[0]
             img_width = mask.shape[1]
 
            # Roads 
             road_region= np.zeros((img_height, img_width), dtype="uint8")
             road_region[np.where(mask[:,:,0]==128.0)[0], np.where(mask[:,:,0]==128.0)[1]]=1
-            
-            #pdb.set_trace()
+
             assert (road_region==1).any(), 'INVALID INPUT:1 no road_region mask'
 
             # Cars: car + truck + bus 
@@ -221,17 +191,13 @@ class kittiroad(keras.utils.Sequence):
             
             assert (everythingelse_region==1).any(), 'INVALID INPUT:1 no everythinselse_region mask'
 
-            #gt_mask = np.stack((road_region, car_region, pedestrian_region, everythingelse_region), axis=-1)
             gt_mask = np.stack((road_region, car_region, everythingelse_region), axis=-1)
             img = gt_mask
-            #pdb.set_trace()
             h,w,c=img.shape
-            dh=int((384-h)/2)
-            dw=int((1248-w)/2)
-            zero_padded_img=np.zeros((384,1248)+(3,), dtype="uint8")
+            dh=int((self.img_size[0]-h)/2)
+            dw=int((self.img_size[1]-w)/2)
+            zero_padded_img=np.zeros(self.img_size+(3,), dtype="uint8")
             zero_padded_img[dh:dh+h,dw:dw+w,:]=img
-            #zero_padded_img=np.argmax(zero_padded_img,-1)
-            #zero_padded_img=np.expand_dims(zero_padded_img, axis=-1)
             if self.val==False: # training
                 zero_padded_img=rotate(zero_padded_img,angle)
             zero_padded_img=zero_padded_img>0    
@@ -244,10 +210,3 @@ class kittiroad(keras.utils.Sequence):
             zero_padded_img=np.expand_dims(zero_padded_img,axis=-1)
             sw[j]=zero_padded_img
         return x1_x2, y, sw
-        
-        
-            
-        
-            
-            
-    
