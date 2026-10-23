@@ -1,7 +1,9 @@
-
-
 # -*- coding: utf-8 -*-
 
+import os
+import sys
+# repo root on the path, so libs/ is found from any working directory
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from tensorflow import keras
 from tensorflow.keras import layers
@@ -189,17 +191,18 @@ def get_model(img_size, ldr_size, prototypes, singleton_num):
     return model
 
 
-img_size = (384,1248) # camera image size
-ldr_size= (384,1248) # projected lidar image size
-prototypes = 6 # number of prototypes
-singleton_num = 2 # number of singletons
+if __name__ == "__main__":
+    img_size = (384,1248) # camera image size
+    ldr_size= (384,1248) # projected lidar image size
+    prototypes = 6 # number of prototypes
+    singleton_num = 2 # number of singletons
 
-#Build model
-model = get_model(img_size, ldr_size, prototypes, singleton_num)
-model.summary()
+    #Build model
+    model = get_model(img_size, ldr_size, prototypes, singleton_num)
+    model.summary()
 
-# save model
-model.save('model_cf_uni_ds',save_format='tf')
+    # save model
+    model.save(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'model_cf_uni_ds'), save_format='tf')
 
 
 

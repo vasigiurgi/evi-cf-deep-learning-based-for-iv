@@ -1,0 +1,25 @@
+[project]
+name = "evi-cf-deep-learning-based-for-iv"
+version = "0.1.0"
+description = "Evidential deep learning-based multi-modal environment perception for intelligent vehicles"
+readme = "README.md"
+requires-python = ">=3.9,<3.11"
+dependencies = [
+    # TF 2.9: last line before Keras changes that break save_format='tf' and these custom layers
+    "tensorflow-macos==2.9.2; sys_platform == 'darwin' and platform_machine == 'arm64'",
+    "tensorflow==2.9.2; sys_platform != 'darwin' or platform_machine != 'arm64'",
+    "numpy<2",
+    "protobuf<3.20",
+    "scikit-learn",
+    "scikit-image",
+    "matplotlib",
+    "pillow",
+]
+
+[project.optional-dependencies]
+# Apple Silicon GPU support
+metal = ["tensorflow-metal==0.5.0; sys_platform == 'darwin' and platform_machine == 'arm64'"]
+notebook = ["jupyter"]
+
+[tool.uv]
+package = false
